@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lam Le app</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="app/app.css">
+    <link href="scripts/jquery-roadmap/jquery.roadmap.min.css" rel="stylesheet" />
+    <link href="contents/ng-alertify.css" rel="stylesheet" />
+    <link href="contents/angular-material.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <link type="text/css" rel="stylesheet" href="contents/loading-bar.css" media='all' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <ui-view class="page"></ui-view>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAq-OFWZFR-h6TR4U74ME9xvp8HwtGGyjY",
+            authDomain: "t2ptimesheetmanagement.firebaseapp.com",
+            databaseURL: "https://t2ptimesheetmanagement.firebaseio.com",
+            projectId: "t2ptimesheetmanagement",
+            storageBucket: "t2ptimesheetmanagement.appspot.com",
+            messagingSenderId: "953506312223"
+        };
+        firebase.initializeApp(config);
+        window.v = 1;
+    </script>
+
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-ui-router.min.js"></script>
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script src="scripts/lodash.js"></script>
+    <script src="scripts/moment.js"></script>
+    <script src="scripts/mask.js"></script>
+    <script src="scripts/ngStorage.js"></script>
+    <script src="scripts/ng-alertify.js"></script>
+    <script src="scripts/angular-messages.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/angular-aria.min.js"></script>
+    <script src="scripts/angular-material.js"></script>
+    <script src="scripts/hotkey.js"></script>
+    <script src="scripts/loading-bar.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script src="scripts/jquery-roadmap/jquery.roadmap.js"></script>
+    <script src="scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+    <script src="app/app.js?v=20190530"></script>
+    <script src="app/services/timesheetService.js?v=20190530"></script>
+    <script src="app/services/convertService.js?v=20190530"></script>
+    <script src="app/services/openProjectService.js?v=20190530"></script>
+    <script src="app/services/orderService.js?v=20190530"></script>
+    <script src="app/services/authenService.js?v=20190530"></script>
+    <script src="app/services/accountService.js?v=20190530"></script>
+    <script src="app/services/transactionService.js?v=20190530"></script>
+    <script src="app/services/userInfoService.js?v=20190530"></script>
+
+    <script src="app/controllers/sprint.controller.js?v=20190530"></script>
+    <script src="app/controllers/timesheet.controller.js?v=20190530"></script>
+    <script src="app/controllers/login.controller.js?v=20190530"></script>
+    <script src="app/controllers/order.controller.js?v=20190530"></script>
+    <script src="app/controllers/orderDetail.controller.js?v=20190530"></script>
+    <script src="app/controllers/app.controller.js?v=20190530"></script>
+    <script src="app/controllers/account.controller.js?v=20190530"></script>
+    <script src="app/controllers/bank.controller.js?v=20190530"></script>
+    <script src="app/controllers/accountActivity.controller.js?v=20190530"></script>
+    <script src="app/controllers/orderTransactionModal.controller.js?v=20190530"></script>
+
+    <script src="app/directives/timeline.directive.js?v=20190530"></script>
+    <script src="app/directives/featuredOrder.directive.js?v=20190530"></script>
+    <script src="app/directives/orderInfo.directive.js?v=20190530"></script>
+    <script src="app/directives/order.creation.form.js?v=20190530"></script>
+    <script src="app/directives/file.upload.js?v=20190530"></script>
+    <script src="app/directives/confirmClick.directive.js?v=20190530"></script>
+    <script src="app/directives/accountList.directive.js?v=20190530"></script>
+    <script src="app/directives/accountCreation.directive.js?v=20190530"></script>
+    <script src="app/directives/transactionList.directive.js?v=20190530"></script>
+
+    <script src="app/app.value.js?v=20190530"></script>
+</body>
+
+</html>
