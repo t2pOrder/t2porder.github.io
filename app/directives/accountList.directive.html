@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="account in accounts" ng-class="{'table-danger': account.balance <= 0 }"
+        <tr ng-repeat="account in accounts" ng-class="{'table-danger': account.balance < 0 }"
             ng-click="toggleAccount(account)" ng-class="{'table-active': selectedAccount.key === account.key}">
             <td>{{$index + 1}}</td>
             <td>{{account.name}}</td>
