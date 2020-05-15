@@ -40,9 +40,19 @@
 
             if (model.editOrderDetailIndex !== undefined) {
                 updateOrder.detail[model.editOrderDetailIndex] = model.orderDetail;
+                
+                
+                
             }
             else {
                 if (!updateOrder.detail) updateOrder.detail = [];
+                
+                if(currentUser) 
+                    model.orderDetail.transactionStatus = true;
+                else 
+                    model.orderDetail.transactionStatus = false;
+                    
+                
                 updateOrder.detail.push(model.orderDetail);
             }
 
