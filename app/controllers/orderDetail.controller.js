@@ -12,6 +12,7 @@
         model.submitOrderDetail = submitOrderDetail;
         model.removeOrderDetail = removeOrderDetail;
         model.editOrderDetail = editOrderDetail;
+        model.payCheckOrderDetail = payCheckOrderDetail;
 
         var currentUser = authenService.getCurrentUser();
 
@@ -25,6 +26,7 @@
                 }
                 else {
                     $timeout(function () {
+                        model.isBooker = currentUser.uid === data.user.key;
                         model.selectedOrder = data;
                         model.trustedWebsiteUrl = $sce.trustAsResourceUrl(model.selectedOrder.menuUrl);
                     });
@@ -43,12 +45,12 @@
             }
             else {
                 if (!updateOrder.detail) updateOrder.detail = [];
-                
-                if(currentUser) 
+
+                if (currentUser)
                     model.orderDetail.transactionStatus = true;
-                else 
+                else
                     model.orderDetail.transactionStatus = false;
-                
+
                 updateOrder.detail.push(model.orderDetail);
             }
 
@@ -78,6 +80,19 @@
         function editOrderDetail(index, orderDetail) {
             model.orderDetail = angular.copy(orderDetail);
             model.editOrderDetailIndex = index;
+        }   
+
+        function payCheckOrderDetail(index, orderDetail) {
+            if (orderDetail.isPaid) {
+                orderDetail.isPaid = false;
+            } else {
+                orderDetail.isPaid = true;
+            }
+
+            var updateOrder = angular.copy(model.selectedOrder);
+            updateOrder.detail[index] = orderDetail;
+
+            orderService.updateOrder(updateOrder);
         }
     }
 
