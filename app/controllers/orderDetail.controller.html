@@ -36,8 +36,7 @@
                                     <!--<th scope="col">Dst Price</th>-->
                                     <th scope="col">Dst.ed Price</th>
                                     <th scope="col">Final Price</th>
-                                    <th ng-if="model.isBooker"
-                                        scope="col">Status</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col"
                                         ng-if="model.selectedOrder.status === 'active'">Action</th>
                                 </tr>
@@ -52,7 +51,7 @@
                                     <!--<td>{{orderDetail.discountPrice | currency: "":0}}</td>-->
                                     <td>{{orderDetail.discountedPrice | currency: "":0}}</td>
                                     <td>{{orderDetail.finalPrice | currency: "":0}}</td>
-                                    <td ng-if="model.isBooker">{{orderDetail.isPaid? 'Paied':'Unpay'}}</td>
+                                    <td>{{orderDetail.isPaid? 'Paied':'Unpay'}}</td>
                                     <td ng-if="model.selectedOrder.status === 'active'">
                                         <i class="fas fa-donate"
                                            ng-if="model.isBooker"
