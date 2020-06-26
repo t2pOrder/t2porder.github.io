@@ -26,7 +26,9 @@
                 }
                 else {
                     $timeout(function () {
-                        model.isBooker = currentUser.uid === data.user.key;
+                        if(currentUser){
+                             model.isBooker = currentUser.uid === data.user.key;
+                        }
                         model.selectedOrder = data;
                         model.trustedWebsiteUrl = $sce.trustAsResourceUrl(model.selectedOrder.menuUrl);
                     });
