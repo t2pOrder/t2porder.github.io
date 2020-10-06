@@ -34,9 +34,9 @@
         </div>
     </form>
 </fieldset>
-<div class="form-group" ng-if="true">
+<div class="form-group" ng-if="user.email === 'duylamln@gmail.com' || user.email == 'dung.nguyen@travel2pay.com' || user.email == 'phung.nguyen@travel2pay.com'">
     <button type="submit" class="btn btn-danger" ng-click="finishOrder()"
-            ng-if="order.status === 'active' && (user.email === 'duylamln@gmail.com' || user.email == 'dung.nguyen@travel2pay.com' || user.email == 'phung.nguyen@travel2pay.com')">
+            ng-if="order.status === 'active'">
         Finish Order
     </button>
     <button type="submit" class="btn btn-danger" ng-click="unlockOrder()"
