@@ -26,12 +26,13 @@
                         </h4>
 
                         <order-info order="model.selectedOrder"></order-info>
-                        <table class="table">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Order</th>
+                                    <th scope="col" class="text-center">Quantity</th>
                                     <th scope="col">Price</th>
                                     <!--<th scope="col">Dst Price</th>-->
                                     <th scope="col">Dst.ed Price</th>
@@ -47,6 +48,7 @@
                                     <td>{{$index + 1}}</td>
                                     <td>{{orderDetail.name}}</td>
                                     <td>{{orderDetail.desc}}</td>
+                                    <td class="text-center">{{orderDetail.quantity ? orderDetail.quantity : 1 }}</td>
                                     <td>{{orderDetail.price | currency: "":0}}</td>
                                     <!--<td>{{orderDetail.discountPrice | currency: "":0}}</td>-->
                                     <td>{{orderDetail.discountedPrice | currency: "":0}}</td>
@@ -63,21 +65,29 @@
                                     </td>
 
                                 </tr>
-                                <tr ng-if="model.selectedOrder.detail && model.selectedOrder.detail.length > 0">
+                                <!-- <tr ng-if="model.selectedOrder.detail && model.selectedOrder.detail.length > 0">
                                     <td colspan="3"
                                         class="text-center">Total</td>
                                     <td>{{model.selectedOrder.totalPrice | currency: "":0 }}</td>
                                     <td>{{model.selectedOrder.totalDiscountedPrice | currency: "":0 }}</td>
-                                </tr>
+                                </tr> -->
                                 <tr ng-if="model.selectedOrder.detail && model.selectedOrder.detail.length > 0">
                                     <td colspan="3"
-                                        class="text-center"><strong>Total (included shipping fee)</strong>
+                                        class="text-left"><strong>Total (included shipping fee)</strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <strong>
+                                            {{model.selectedOrder.totalQuantity}}
+
+                                        </strong>
                                     </td>
                                     <td><strong>{{model.selectedOrder.totalPriceWithShippingFee | currency: "":0 }}</strong>
                                     </td>
                                     <td><strong>{{model.selectedOrder.totalDiscountedPriceWithShippingFee | currency: "":0 }}</strong>
                                     </td>
                                     <td><strong>{{model.selectedOrder.totalFinalPrice | currency: "":0 }}</strong></td>
+                                    <td></td>    
+                                    <td></td>    
                                 </tr>
                             </tbody>
                         </table>
@@ -104,12 +114,22 @@
                                            placeholder="would you like something ?"
                                            ng-model="model.orderDetail.desc">
                                 </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input type="number"
-                                           class="form-control"
-                                           placeholder="e.g. 54.000"
-                                           ng-model="model.orderDetail.price">
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label>Price</label>
+                                        <input type="number"
+                                            class="form-control"
+                                            placeholder="e.g. 54.000"
+                                            min="0"
+                                            ng-model="model.orderDetail.price">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputState">Quantity</label>
+                                        <input type="number"
+                                            class="form-control"
+                                            min="1"
+                                            ng-model="model.orderDetail.quantity">
+                                    </div>
                                 </div>
                                 <button type="submit"
                                         class="btn btn-primary"
@@ -124,14 +144,14 @@
                          ng-if="model.selectedOrder.detail">
                         <h4>Order Group</h4>
                         <table class="table">
-                            <tr ng-repeat="(key, value) in model.selectedOrder.detail | groupBy: 'desc'"
+                            <tr ng-repeat="(key, items) in model.selectedOrder.detail | groupBy: 'desc'"
                                 ng-if="model.selectedOrder.detail && model.selectedOrder.detail.length > 0">
                                 <td colspan="3">{{key}}</td>
-                                <td>{{value.length}}</td>
+                                <td>{{model.getQuantity(items)}}</td>
                             </tr>
                             <tr>
                                 <td colspan="3"><b>Total</b></td>
-                                <td><b>{{model.selectedOrder.detail.length}}</b></td>
+                                <td><b>{{model.getTotalQuantityGroup(model.selectedOrder.detail)}}</b></td>
                             </tr>
                         </table>
                     </div>

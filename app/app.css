@@ -1,5 +1,10 @@
 /* app css stylesheet */
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #d5e0eb;
+    cursor: pointer;
+  }
+
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
@@ -119,7 +124,7 @@ table tr.table-odd-row {
 
 
 .order .table td, .order .table th {
-    border-top: none;
+    /* border-top: none; */
 }
 
 fieldset.fieldset-border {

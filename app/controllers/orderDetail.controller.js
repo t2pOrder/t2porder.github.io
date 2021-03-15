@@ -6,17 +6,29 @@
         var orderKey = $stateParams.key;
         var { displayName } = firebase.auth().currentUser || "";
         model.orderDetail = {
-            name: displayName
+            name: displayName,
+            quantity : 1,
         }
-
         model.submitOrderDetail = submitOrderDetail;
         model.removeOrderDetail = removeOrderDetail;
         model.editOrderDetail = editOrderDetail;
         model.payCheckOrderDetail = payCheckOrderDetail;
+        model.getQuantity = getQuantity;
+        model.getTotalQuantityGroup = getTotalQuantityGroup;
 
         var currentUser = authenService.getCurrentUser();
 
         activate();
+
+        function getQuantity(items) {
+            return items
+                .map(function(x) { return x.quantity ? x.quantity : 1 ; })
+                .reduce(function(a, b) { return a + b; });
+        };
+
+        function getTotalQuantityGroup(items){
+            return _.sumBy(items, function(item) { return item.quantity; });
+        }
 
         function activate() {
             orderService.subscribeOrder(orderKey, function (data) {
@@ -29,6 +41,15 @@
                         if(currentUser){
                              model.isBooker = currentUser.uid === data.user.key;
                         }
+
+                        if(data && data.detail){
+                            _.forEach(data.detail, function(item){
+                                 if(!item.quantity){
+                                     item.quantity = 1;
+                                 }
+                            });
+                        }
+
                         model.selectedOrder = data;
                         model.trustedWebsiteUrl = $sce.trustAsResourceUrl(model.selectedOrder.menuUrl);
                     });
@@ -39,6 +60,10 @@
         function submitOrderDetail() {
             if (!model.orderDetail.name || !model.orderDetail.desc) return;
             model.orderDetail.tranId = model.orderDetail.tranId || window.generateId();
+
+            model.orderDetail.price *= model.orderDetail.quantity;
+
+            // console.log(model.orderDetail);
 
             var updateOrder = angular.copy(model.selectedOrder);
 

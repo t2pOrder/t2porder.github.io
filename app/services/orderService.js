@@ -58,6 +58,7 @@
             var datapost = angular.copy(order);
             convertService.convertMomentToString(datapost);
 
+            calculateTotalQuantity(datapost);
             calculateTotalPrice(datapost);
             calculateDiscount(datapost);
             calculateTransactionStatus(datapost);
@@ -153,6 +154,10 @@
             order.totalFinalPrice = _.reduce(order.detail, function (sum, item) {
                 return sum += Number.parseFloat(item.finalPrice);
             }, 0);
+        }
+
+        function calculateTotalQuantity(order){
+            order.totalQuantity = _.sumBy(order.detail, function(item) { return item.quantity ? item.quantity : 1; });
         }
 
         function calculateTotalPrice(order) {
