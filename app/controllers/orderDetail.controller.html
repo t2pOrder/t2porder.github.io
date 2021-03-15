@@ -44,6 +44,8 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="orderDetail in model.selectedOrder.detail"
+                                    ng-click="model.editOrderDetail($index, orderDetail)"
+                                    class="nofocus"
                                     ng-class="{'table-danger': model.selectedOrder.withdrawFromAccountBalance && !orderDetail.transactionStatus}">
                                     <td>{{$index + 1}}</td>
                                     <td>{{orderDetail.name}}</td>

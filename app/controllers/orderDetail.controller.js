@@ -107,6 +107,8 @@
         function editOrderDetail(index, orderDetail) {
             model.orderDetail = angular.copy(orderDetail);
             model.editOrderDetailIndex = index;
+
+            // $(this).addClass('active').siblings().removeClass('active');
         }   
 
         function payCheckOrderDetail(index, orderDetail) {

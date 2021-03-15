@@ -1,9 +1,6 @@
 /* app css stylesheet */
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    background-color: #d5e0eb;
-    cursor: pointer;
-  }
+
 
 .menu {
     list-style: none;
@@ -122,10 +119,22 @@ table tr.table-odd-row {
     height: 750px;
 }
 
-
-.order .table td, .order .table th {
-    /* border-top: none; */
+.nofocus:focus {
+    /* outline: 1px solid rgb(247, 189, 176);
+    background-color: rgb(247, 189, 176); */
+    /* outline: none; */
+     outline: 1px solid rgb(136, 136, 136);
+    background-color: rgb(241, 231, 228);;
+    font-weight: bold;
 }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgb(241, 231, 228);;
+    cursor: pointer;
+  }
+/* .order .table td, .order .table th {
+    /* border-top: none; 
+} */
 
 fieldset.fieldset-border {
     border: 1px solid #ced4da;
