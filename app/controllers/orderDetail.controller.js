@@ -91,9 +91,12 @@
 
             orderService.updateOrder(updateOrder)
                 .then(function () {
-                    model.orderDetail = undefined;
+                     model.orderDetail = undefined;
                     model.editOrderDetailIndex = undefined;
+
                 });
+            // model.orderDetail.quantity = 1;
+
         }
 
         function removeOrderDetail(index) {

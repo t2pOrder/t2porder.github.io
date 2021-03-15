@@ -29,16 +29,16 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col" class="text-center">#</th>
+                                    <th scope="col" class="text-left">Name</th>
                                     <th scope="col">Order</th>
                                     <th scope="col" class="text-center">Quantity</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col" class="text-center">Price</th>
                                     <!--<th scope="col">Dst Price</th>-->
-                                    <th scope="col">Dst.ed Price</th>
-                                    <th scope="col">Final Price</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col"
+                                    <th scope="col" class="text-center">Dst.ed Price</th>
+                                    <th scope="col" class="text-center">Final Price</th>
+                                    <th scope="col" class="text-center">Status</th>
+                                    <th scope="col" class="text-center"
                                         ng-if="model.selectedOrder.status === 'active'">Action</th>
                                 </tr>
                             </thead>
@@ -51,12 +51,12 @@
                                     <td>{{orderDetail.name}}</td>
                                     <td>{{orderDetail.desc}}</td>
                                     <td class="text-center">{{orderDetail.quantity ? orderDetail.quantity : 1 }}</td>
-                                    <td>{{orderDetail.priceQuantity | currency: "":0}}</td>
+                                    <td class="text-center">{{orderDetail.priceQuantity | currency: "":0}}</td>
                                     <!--<td>{{orderDetail.discountPrice | currency: "":0}}</td>-->
-                                    <td>{{orderDetail.discountedPrice | currency: "":0}}</td>
-                                    <td>{{orderDetail.finalPrice | currency: "":0}}</td>
+                                    <td class="text-center">{{orderDetail.discountedPrice | currency: "":0}}</td>
+                                    <td class="text-center">{{orderDetail.finalPrice | currency: "":0}}</td>
                                     <td>{{orderDetail.isPaid? 'Paied':'Unpay'}}</td>
-                                    <td ng-if="model.selectedOrder.status === 'active'">
+                                    <td ng-if="model.selectedOrder.status === 'active'" class="text-center">
                                         <i class="fas fa-donate"
                                            ng-if="model.isBooker"
                                            ng-click="model.payCheckOrderDetail($index, orderDetail)"></i>
@@ -83,11 +83,11 @@
 
                                         </strong>
                                     </td>
-                                    <td><strong>{{model.selectedOrder.totalPriceWithShippingFee | currency: "":0 }}</strong>
+                                    <td class="text-center"><strong>{{model.selectedOrder.totalPriceWithShippingFee | currency: "":0 }}</strong>
                                     </td>
-                                    <td><strong>{{model.selectedOrder.totalDiscountedPriceWithShippingFee | currency: "":0 }}</strong>
+                                    <td class="text-center"><strong>{{model.selectedOrder.totalDiscountedPriceWithShippingFee | currency: "":0 }}</strong>
                                     </td>
-                                    <td><strong>{{model.selectedOrder.totalFinalPrice | currency: "":0 }}</strong></td>
+                                    <td class="text-center"><strong>{{model.selectedOrder.totalFinalPrice | currency: "":0 }}</strong></td>
                                     <td></td>    
                                     <td></td>    
                                 </tr>

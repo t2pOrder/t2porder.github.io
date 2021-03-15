@@ -113,6 +113,7 @@
                 // item discounted price
                 _.each(order.detail, function (item) {
                     var price = Number.parseFloat(item.price);
+                    var priceQuantity = Number.parseFloat(item.priceQuantity);
                     if (isNaN(price)) {
                         item.price = 0;
                         item.discountPrice = 0;
@@ -121,8 +122,9 @@
                     }
                     else {
                         item.price = price
-                        item.discountPrice = (price * order.discount) / 100;
-                        item.discountedPrice = price - item.discountPrice;
+                        item.priceQuantity = priceQuantity;
+                        item.discountPrice = (priceQuantity * order.discount) / 100;
+                        item.discountedPrice = priceQuantity - item.discountPrice;
                         item.finalPrice = item.discountedPrice + avgShippingFee;
                     }
                 });
@@ -163,8 +165,8 @@
         function calculateTotalPrice(order) {
 
             order.totalPrice = _.reduce(order.detail, function (sum, item) {
-                if (isNaN(Number.parseFloat(item.price))) return sum += 0;
-                return sum += Number.parseFloat(item.price);
+                if (isNaN(Number.parseFloat(item.priceQuantity))) return sum += 0;
+                return sum += Number.parseFloat(item.priceQuantity);
             }, 0);
 
             var shippingFee = Number.parseFloat(order.shippingFee);
