@@ -116,6 +116,7 @@
                     var priceQuantity = Number.parseFloat(item.priceQuantity);
                     if (isNaN(price)) {
                         item.price = 0;
+                        item.priceQuantity = 0;
                         item.discountPrice = 0;
                         item.discountedPrice = 0;
                         item.finalPrice = 0;
