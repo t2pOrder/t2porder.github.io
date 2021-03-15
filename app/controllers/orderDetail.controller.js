@@ -47,6 +47,9 @@
                                  if(!item.quantity){
                                      item.quantity = 1;
                                  }
+                                 if(!item.priceQuantity){
+                                    item.priceQuantity = item.price * item.quantity;
+                                 }
                             });
                         }
 
@@ -61,7 +64,7 @@
             if (!model.orderDetail.name || !model.orderDetail.desc) return;
             model.orderDetail.tranId = model.orderDetail.tranId || window.generateId();
 
-            model.orderDetail.price *= model.orderDetail.quantity;
+            model.orderDetail.priceQuantity = model.orderDetail.price * model.orderDetail.quantity;
 
             // console.log(model.orderDetail);
 
@@ -105,6 +108,7 @@
         }
 
         function editOrderDetail(index, orderDetail) {
+            // console.log(orderDetail);
             model.orderDetail = angular.copy(orderDetail);
             model.editOrderDetailIndex = index;
 
