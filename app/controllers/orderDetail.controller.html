@@ -74,8 +74,9 @@
                                     <td>{{model.selectedOrder.totalDiscountedPrice | currency: "":0 }}</td>
                                 </tr> -->
                                 <tr ng-if="model.selectedOrder.detail && model.selectedOrder.detail.length > 0">
-                                    <td colspan="3"
-                                        class="text-center"><strong>Total (included shipping fee)</strong>
+                                    <td></td>
+                                    <td colspan="2"
+                                        class="text-left"><strong>Total (included shipping fee)</strong>
                                     </td>
                                     <td class="text-center">
                                         <strong>
