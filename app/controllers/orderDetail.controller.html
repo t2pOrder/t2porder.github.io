@@ -1,16 +1,12 @@
-<div class="order"
-     ng-cloak>
+<div class="order" ng-cloak>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm">
                 <div class="row">
-                    <div class="col"
-                         ng-if="model.trustedWebsiteUrl">
-                        <iframe class="order-website"
-                                ng-src="{{model.trustedWebsiteUrl}}"></iframe>
+                    <div class="col" ng-if="model.trustedWebsiteUrl">
+                        <iframe class="order-website" ng-src="{{model.trustedWebsiteUrl}}"></iframe>
                     </div>
-                    <div class="col"
-                         ng-if="!model.trustedWebsiteUrl">
+                    <div class="col" ng-if="!model.trustedWebsiteUrl">
                         Nothing to show
                     </div>
                 </div>
@@ -18,13 +14,11 @@
 
 
             <div class="col-sm">
-                <div class="row"
-                     ng-if="model.selectedOrder">
+                <div class="row" ng-if="model.selectedOrder">
                     <div class="col">
-                        <h4>
-                            {{model.selectedOrder.name}}
-                        </h4>
-
+                        <h5>
+                            <a href="{{model.trustedWebsiteUrl}}" target="_blank">{{model.selectedOrder.name}}</a>
+                        </h5>
                         <order-info order="model.selectedOrder"></order-info>
                         <table class="table table-hover">
                             <thead>
@@ -38,14 +32,13 @@
                                     <th scope="col" class="text-center">Dst.ed Price</th>
                                     <th scope="col" class="text-center">Final Price</th>
                                     <th scope="col" class="text-center">Status</th>
-                                    <th scope="col" class="text-center"
-                                        ng-if="model.selectedOrder.status === 'active'">Action</th>
+                                    <th scope="col" class="text-center" ng-if="model.selectedOrder.status === 'active'">
+                                        Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="orderDetail in model.selectedOrder.detail"
-                                    ng-click="model.editOrderDetail($index, orderDetail)"
-                                    class="nofocus"
+                                    ng-click="model.editOrderDetail($index, orderDetail)" class="nofocus"
                                     ng-class="{'table-danger': model.selectedOrder.withdrawFromAccountBalance && !orderDetail.transactionStatus}">
                                     <td>{{$index + 1}}</td>
                                     <td>{{orderDetail.name}}</td>
@@ -57,13 +50,11 @@
                                     <td class="text-center">{{orderDetail.finalPrice | currency: "":0}}</td>
                                     <td>{{orderDetail.isPaid? 'Paied':'Unpay'}}</td>
                                     <td ng-if="model.selectedOrder.status === 'active'" class="text-center">
-                                        <i class="fas fa-donate"
-                                           ng-if="model.isBooker"
-                                           ng-click="model.payCheckOrderDetail($index, orderDetail)"></i>
+                                        <i class="fas fa-donate" ng-if="model.isBooker"
+                                            ng-click="model.payCheckOrderDetail($index, orderDetail)"></i>
                                         <i class="fas fa-edit"
-                                           ng-click="model.editOrderDetail($index, orderDetail)"></i>
-                                        <i class="fas fa-trash-alt"
-                                           ng-click="model.removeOrderDetail($index)"></i>
+                                            ng-click="model.editOrderDetail($index, orderDetail)"></i>
+                                        <i class="fas fa-trash-alt" ng-click="model.removeOrderDetail($index)"></i>
                                     </td>
 
                                 </tr>
@@ -75,8 +66,7 @@
                                 </tr> -->
                                 <tr ng-if="model.selectedOrder.detail && model.selectedOrder.detail.length > 0">
                                     <td></td>
-                                    <td colspan="2"
-                                        class="text-left"><strong>Total (included shipping fee)</strong>
+                                    <td colspan="2" class="text-left"><strong>Total (included shipping fee)</strong>
                                     </td>
                                     <td class="text-center">
                                         <strong>
@@ -84,67 +74,59 @@
 
                                         </strong>
                                     </td>
-                                    <td class="text-center"><strong>{{model.selectedOrder.totalPriceWithShippingFee | currency: "":0 }}</strong>
+                                    <td class="text-center"><strong>{{model.selectedOrder.totalPriceWithShippingFee |
+                                            currency: "":0 }}</strong>
                                     </td>
-                                    <td class="text-center"><strong>{{model.selectedOrder.totalDiscountedPriceWithShippingFee | currency: "":0 }}</strong>
+                                    <td class="text-center">
+                                        <strong>{{model.selectedOrder.totalDiscountedPriceWithShippingFee | currency:
+                                            "":0 }}</strong>
                                     </td>
-                                    <td class="text-center"><strong>{{model.selectedOrder.totalFinalPrice | currency: "":0 }}</strong></td>
-                                    <td></td>    
-                                    <td></td>    
+                                    <td class="text-center"><strong>{{model.selectedOrder.totalFinalPrice | currency:
+                                            "":0 }}</strong></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="row"
-                     ng-if="model.selectedOrder && model.selectedOrder.status === 'active'"
-                     style="margin-top: 40px">
+                <div class="row" ng-if="model.selectedOrder && model.selectedOrder.status === 'active'"
+                    style="margin-top: 40px">
                     <div class="col-6">
                         <fieldset class="fieldset-border">
                             <legend>Order Detail:</legend>
                             <form>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text"
-                                           class="form-control"
-                                           placeholder="your name"
-                                           ng-model="model.orderDetail.name">
+                                    <input type="text" class="form-control" placeholder="your name"
+                                        ng-model="model.orderDetail.name">
                                 </div>
                                 <div class="form-group">
                                     <label>Order</label>
-                                    <input type="text"
-                                           class="form-control"
-                                           placeholder="would you like something ?"
-                                           ng-model="model.orderDetail.desc">
+                                    <input type="text" class="form-control" placeholder="would you like something ?"
+                                        ng-model="model.orderDetail.desc">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label>Price</label>
-                                        <input type="number"
-                                            class="form-control"
-                                            placeholder="e.g. 54.000"
-                                            min="0"
+                                        <input type="number" class="form-control" placeholder="e.g. 54.000" min="0"
                                             ng-model="model.orderDetail.price">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputState">Quantity</label>
-                                        <input type="number"
-                                            class="form-control"
-                                            min="1"
+                                        <input type="number" class="form-control" min="1"
                                             ng-model="model.orderDetail.quantity">
                                     </div>
                                 </div>
-                                <button type="submit"
-                                        class="btn btn-primary float-right"
-                                        ng-click="model.submitOrderDetail()"
-                                        ng-disabled="!model.orderDetail.name || !model.orderDetail.desc">
+                                <button type="submit" class="btn btn-primary float-right"
+                                    ng-click="model.submitOrderDetail()"
+                                    ng-disabled="!model.orderDetail.name || !model.orderDetail.desc">
                                     Submit
                                 </button>
                             </form>
                         </fieldset>
                     </div>
-                    <div class="col-6"
-                         ng-if="model.selectedOrder.detail">
+                    <div class="col-6" ng-if="model.selectedOrder.detail">
                         <h4>Order Group</h4>
                         <table class="table">
                             <tr ng-repeat="(key, items) in model.selectedOrder.detail | groupBy: 'desc'"
