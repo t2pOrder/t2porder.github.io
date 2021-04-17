@@ -130,7 +130,7 @@ table tr.table-odd-row {
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     background-color: rgb(241, 231, 228);;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 /* .order .table td, .order .table th {
     /* border-top: none; 
