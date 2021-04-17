@@ -14,11 +14,18 @@
         model.editOrderDetail = editOrderDetail;
         model.payCheckOrderDetail = payCheckOrderDetail;
         model.getQuantity = getQuantity;
+        model.getSumOfGroup = getSumOfGroup;
         model.getTotalQuantityGroup = getTotalQuantityGroup;
 
         var currentUser = authenService.getCurrentUser();
 
         activate();
+
+        function getSumOfGroup(items){
+            return items
+            .map(function(x) { return x.finalPrice ? x.finalPrice : 0 ; })
+            .reduce(function(a, b) { return a + b; });
+        }
 
         function getQuantity(items) {
             return items

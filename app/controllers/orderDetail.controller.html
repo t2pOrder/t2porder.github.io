@@ -133,10 +133,12 @@
                                 ng-if="model.selectedOrder.detail && model.selectedOrder.detail.length > 0">
                                 <td colspan="3">{{key}}</td>
                                 <td>{{model.getQuantity(items)}}</td>
+                                <td>{{model.getSumOfGroup(items) | currency: "": 0 }}</td>
                             </tr>
                             <tr>
                                 <td colspan="3"><b>Total</b></td>
                                 <td><b>{{model.getTotalQuantityGroup(model.selectedOrder.detail)}}</b></td>
+                                <td><b>{{model.selectedOrder.totalFinalPrice | currency: "":0 }}</b></td>
                             </tr>
                         </table>
                     </div>
