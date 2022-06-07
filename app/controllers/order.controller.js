@@ -53,7 +53,7 @@
         }
 
         function removeOrder(order, $event) {
-            orderService.removeOrder(order);
+            //orderService.removeOrder(order);
 
             $event.stopPropagation();
             $event.preventDefault();
